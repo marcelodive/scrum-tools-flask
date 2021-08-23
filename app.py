@@ -1,11 +1,18 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_socketio import SocketIO, join_room, leave_room
-from flask import jsonify
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, cors_allowed_origins="*")
 socketio.run(app)
+
+@app.route('/<path:path>', methods=['GET'])
+def static_proxy(path):
+  return send_from_directory('./', path)
+
+@app.route('/')
+def root():
+  return send_from_directory('./', 'index.html')
 
 @socketio.on('room updated')
 def message(room):
