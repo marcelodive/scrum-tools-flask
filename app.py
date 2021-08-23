@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_socketio import SocketIO, join_room
+from flask_socketio import SocketIO, join_room, leave_room
 from flask import jsonify
 
 app = Flask(__name__)
@@ -27,12 +27,9 @@ def on_join(roomId):
     print('join room')
     join_room(roomId)
 
-# @app.route("/")
-# def hello_world():
-#     return "<p>Hello, World!</p>"
-
-# @app.route('/room', methods=['GET', 'POST'])
-# def create_room():
-#     return jsonify('ckaei93')
-
-# EC67pEiPD67RF4h
+@socketio.on('left room')
+def on_left(userInfo):
+    print('user left')
+    leave_room(userInfo['roomId'])
+    socketio.emit('user left the room', userInfo['username'], to = userInfo['roomId'])
+    
