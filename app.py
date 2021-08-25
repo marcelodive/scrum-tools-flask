@@ -4,7 +4,9 @@ from flask_socketio import SocketIO, join_room, leave_room
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, cors_allowed_origins="*")
-socketio.run(app)
+
+if __name__ == '__main__':
+  socketio.run(app)
 
 @app.route('/<path:path>', methods=['GET'])
 def static_proxy(path):
