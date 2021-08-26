@@ -6,4 +6,3 @@ cd ../scrum-tools-flask/
 git add -A
 git commit -a -m "deploy.sh"
 git push
-git push heroku main
