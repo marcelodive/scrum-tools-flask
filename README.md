@@ -1,5 +1,9 @@
-. venv/bin/activate
+## TODO
 
-pip install -r requirements.txt
+- A decent readme
 
-flask run
+## Install
+
+- . venv/bin/activate
+- pip install -r requirements.txt
+- flask run
