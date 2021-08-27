@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/sammy/scrum/venv"
+VIRTUAL_ENV="/home/marcelo/Development/scrum-tools/scrum-tools-flask/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
