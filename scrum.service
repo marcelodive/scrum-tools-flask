@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve myproject
+After=network.target
+
+[Service]
+User=sammy
+Group=www-data
+WorkingDirectory=/home/sammy/scrum
+Environment="PATH=/home/sammy/scrum/venv/bin"
+ExecStart=/home/sammy/scrum/venv/bin/uwsgi --ini app.ini
+
+[Install]
+WantedBy=multi-user.target
