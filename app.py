@@ -22,22 +22,30 @@ def root_en():
 
 @socketio.on('room updated')
 def room_updated(room):
-    socketio.emit('room updated', room, to = room['id'])
+  socketio.emit('room updated', room, to = room['id'])
 
 @socketio.on('new user enter poker room')
 def new_user_poker(newUserInfo):
-    socketio.emit('new user enter poker room', newUserInfo, to = newUserInfo['roomId'])
+  socketio.emit('new user enter poker room', newUserInfo, to = newUserInfo['roomId'])
 
 @socketio.on('new user enter ballot room')
 def new_user_ballot(newUserInfo):
-    socketio.emit('new user enter ballot room', newUserInfo, to = newUserInfo['roomId'])
+  socketio.emit('new user enter ballot room', newUserInfo, to = newUserInfo['roomId'])
+
+@socketio.on('user updated')
+def ballot_user_updated(updatedUser):
+  socketio.emit('user updated', updatedUser, to = updatedUser['roomId'])
+
+@socketio.on('update room for new user')
+def update_room_for_new_user(room):
+  socketio.emit('update room for new user', room, to = room['id'])
 
 @socketio.on('join room')
 def on_join(roomId):
-    join_room(roomId)
+  join_room(roomId)
 
 @socketio.on('left room')
 def on_left(userInfo):
-    leave_room(userInfo['roomId'])
-    socketio.emit('user left the room', userInfo['username'], to = userInfo['roomId'])
+  leave_room(userInfo['roomId'])
+  socketio.emit('user left the room', userInfo['username'], to = userInfo['roomId'])
     
